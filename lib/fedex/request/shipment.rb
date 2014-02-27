@@ -46,6 +46,7 @@ module Fedex
           add_shipping_charges_payment(xml)
           add_special_services(xml) if @shipping_options[:return_reason]
           add_customs_clearance(xml) if @customs_clearance
+          add_smart_post_detail xml if service_type == "SMART_POST"
           add_custom_components(xml)
           xml.RateRequestTypes "ACCOUNT"
           add_packages(xml)
@@ -55,6 +56,14 @@ module Fedex
       # Hook that can be used to add custom parts.
       def add_custom_components(xml)
         add_label_specification xml
+      end
+
+      def add_smart_post_detail(xml)
+        smart_post_detail = @shipping_options[:smart_post_detail]
+        xml.SmartPostDetail {
+          xml.Indicia smart_post_detail[:indicia]
+          xml.HubId smart_post_detail[:hub_id]
+        }
       end
 
       # Add the label specification

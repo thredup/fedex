@@ -3,6 +3,8 @@ require 'fedex/request/base'
 module Fedex
   module Request
     class Shipment < Base
+      SERVICE_VERSION = 21
+
       attr_reader :response_details
 
       def initialize(credentials, options={})
@@ -38,17 +40,17 @@ module Fedex
       def add_requested_shipment(xml)
         xml.RequestedShipment{
           xml.ShipTimestamp @shipping_options[:ship_timestamp] ||= Time.now.utc.iso8601(2)
-          xml.DropoffType @shipping_options[:drop_off_type] ||= "REGULAR_PICKUP"
+          xml.DropoffType @shipping_options[:drop_off_type] ||= 'REGULAR_PICKUP'
           xml.ServiceType service_type
-          xml.PackagingType @shipping_options[:packaging_type] ||= "YOUR_PACKAGING"
+          xml.PackagingType @shipping_options[:packaging_type] ||= 'YOUR_PACKAGING'
           add_shipper(xml)
           add_recipient(xml)
           add_shipping_charges_payment(xml)
           add_special_services(xml) if @shipping_options[:return_reason]
           add_customs_clearance(xml) if @customs_clearance
-          add_smart_post_detail xml if service_type == "SMART_POST"
+          add_smart_post_detail(xml) if service_type == 'SMART_POST'
           add_custom_components(xml)
-          xml.RateRequestTypes "ACCOUNT"
+          xml.RateRequestTypes 'PREFERRED'
           add_packages(xml)
         }
       end
@@ -61,6 +63,9 @@ module Fedex
       def add_smart_post_detail(xml)
         smart_post_detail = @shipping_options[:smart_post_detail]
         xml.SmartPostDetail {
+          xml.ProcessingOptionsRequested {
+            xml.Options 'GROUND_TRACKING_NUMBER_REQUESTED'
+          }
           xml.Indicia smart_post_detail[:indicia]
           xml.HubId smart_post_detail[:hub_id]
         }
@@ -77,9 +82,9 @@ module Fedex
 
       def add_special_services(xml)
         xml.SpecialServicesRequested {
-          xml.SpecialServiceTypes "RETURN_SHIPMENT"
+          xml.SpecialServiceTypes 'RETURN_SHIPMENT'
           xml.ReturnShipmentDetail {
-            xml.ReturnType "PRINT_RETURN_LABEL"
+            xml.ReturnType 'PRINT_RETURN_LABEL'
             xml.Rma {
               xml.Reason "#{@shipping_options[:return_reason]}"
             }
@@ -105,7 +110,7 @@ module Fedex
       # Build xml Fedex Web Service request
       def build_xml
         builder = Nokogiri::XML::Builder.new do |xml|
-          xml.ProcessShipmentRequest(:xmlns => "http://fedex.com/ws/ship/v12"){
+          xml.ProcessShipmentRequest(:xmlns => "http://fedex.com/ws/ship/v#{service[:version]}") {
             add_web_authentication_detail(xml)
             add_client_detail(xml)
             add_version(xml)
@@ -116,7 +121,7 @@ module Fedex
       end
 
       def service
-        { :id => 'ship', :version => 12 }
+        { :id => 'ship', :version => SERVICE_VERSION }
       end
 
       # Successful request

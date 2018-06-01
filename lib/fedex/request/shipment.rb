@@ -24,13 +24,14 @@ module Fedex
       # The parsed Fedex response is available in #response_details
       # e.g. response_details[:completed_shipment_detail][:completed_package_details][:tracking_ids][:tracking_number]
       def process_request
-        api_response = self.class.post api_url, :body => build_xml
+        request_body = build_xml
+        api_response = self.class.post api_url, :body => request_body
         puts api_response if @debug
         response = parse_response(api_response)
         if success?(response)
           success_response(api_response, response)
         else
-          failure_response(api_response, response)
+          failure_response(request_body, api_response, response)
         end
       end
 
@@ -93,13 +94,13 @@ module Fedex
       end
 
       # Callback used after a failed shipment response.
-      def failure_response(api_response, response)
+      def failure_response(request_body, api_response, response)
         error_message = if response[:process_shipment_reply]
           [response[:process_shipment_reply][:notifications]].flatten.first[:message]
         else
           "#{api_response["Fault"]["detail"]["fault"]["reason"]}\n--#{api_response["Fault"]["detail"]["fault"]["details"]["ValidationFailureDetail"]["message"].join("\n--")}"
         end rescue $1
-        raise RateError, error_message
+        raise RateError.new(error_message, request_body, api_response)
       end
 
       # Callback used after a successful shipment response.

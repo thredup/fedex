@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://gatewaybeta.fedex.com/xml/
+    body:
+      encoding: UTF-8
+      string: |-
+        <ProcessShipmentRequest xmlns="http://fedex.com/ws/ship/v21">
+          <WebAuthenticationDetail>
+            <UserCredential>
+              <Key>xxx</Key>
+              <Password>xxx</Password>
+            </UserCredential>
+          </WebAuthenticationDetail>
+          <ClientDetail>
+            <AccountNumber>xxx</AccountNumber>
+            <MeterNumber>xxx</MeterNumber>
+            <Localization>
+              <LanguageCode>en</LanguageCode>
+              <LocaleCode>us</LocaleCode>
+            </Localization>
+          </ClientDetail>
+          <Version>
+            <ServiceId>ship</ServiceId>
+            <Major>21</Major>
+            <Intermediate>0</Intermediate>
+            <Minor>0</Minor>
+          </Version>
+          <RequestedShipment>
+            <ShipTimestamp>2019-08-24T01:34:25.00Z</ShipTimestamp>
+            <DropoffType>REGULAR_PICKUP</DropoffType>
+            <ServiceType>GROUND_HOME_DELIVERY</ServiceType>
+            <PackagingType>YOUR_PACKAGING</PackagingType>
+            <Shipper>
+              <Contact>
+                <PersonName>Sender</PersonName>
+                <CompanyName>Company</CompanyName>
+                <PhoneNumber>555-555-5555</PhoneNumber>
+              </Contact>
+              <Address>
+                <StreetLines>Main Street</StreetLines>
+                <City>Harrison</City>
+                <StateOrProvinceCode>AR</StateOrProvinceCode>
+                <PostalCode>72601</PostalCode>
+                <CountryCode>US</CountryCode>
+              </Address>
+            </Shipper>
+            <Recipient>
+              <Contact>
+                <PersonName>Recipient</PersonName>
+                <CompanyName>Company</CompanyName>
+                <PhoneNumber>555-555-5555</PhoneNumber>
+              </Contact>
+              <Address>
+                <StreetLines>Main Street</StreetLines>
+                <City>Frankin Park</City>
+                <StateOrProvinceCode>IL</StateOrProvinceCode>
+                <PostalCode>60131</PostalCode>
+                <CountryCode>US</CountryCode>
+                <Residential>true</Residential>
+              </Address>
+            </Recipient>
+            <ShippingChargesPayment>
+              <PaymentType>SENDER</PaymentType>
+              <Payor>
+                <ResponsibleParty>
+                  <AccountNumber>xxx</AccountNumber>
+                  <Contact>
+                    <PersonName>Sender</PersonName>
+                    <CompanyName>Company</CompanyName>
+                    <PhoneNumber>555-555-5555</PhoneNumber>
+                  </Contact>
+                </ResponsibleParty>
+              </Payor>
+            </ShippingChargesPayment>
+            <LabelSpecification>
+              <LabelFormatType>COMMON2D</LabelFormatType>
+              <ImageType>PNG</ImageType>
+              <LabelStockType>PAPER_LETTER</LabelStockType>
+            </LabelSpecification>
+            <RateRequestTypes>PREFERRED</RateRequestTypes>
+            <PackageCount>1</PackageCount>
+            <RequestedPackageLineItems>
+              <GroupPackageCount>1</GroupPackageCount>
+              <Weight>
+                <Units>LB</Units>
+                <Value>2</Value>
+              </Weight>
+              <Dimensions>
+                <Length>10</Length>
+                <Width>5</Width>
+                <Height>4</Height>
+                <Units>IN</Units>
+              </Dimensions>
+            </RequestedPackageLineItems>
+          </RequestedShipment>
+        </ProcessShipmentRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Aug 2019 10:10:57 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - siteDC=edc; path=/; domain=.fedex.com; expires=Thu, 22-Aug-2019 10:10:57 GMT
+      X-Csr-Log-Transaction-Id:
+      - c6014272-2b4c-45b6-9234-bee1de4562dc
+      X-Csr-Elapsed-Millis:
+      - '417'
+      Vary:
+      - Accept-Encoding
+      Responsesslprotocol:
+      - TLSv1.2
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><ProcessShipmentReply xmlns="http://fedex.com/ws/ship/v21"><HighestSeverity>SUCCESS</HighestSeverity><Notifications><Severity>SUCCESS</Severity><Source>ship</Source><Code>0000</Code><Message>Success</Message><LocalizedMessage>Success</LocalizedMessage></Notifications><Version><ServiceId>ship</ServiceId><Major>21</Major><Intermediate>0</Intermediate><Minor>0</Minor></Version><JobId>41ae256cb032cbp116b9j912401</JobId><CompletedShipmentDetail><UsDomestic>true</UsDomestic><CarrierCode>FDXG</CarrierCode><MasterTrackingId><TrackingIdType>FEDEX</TrackingIdType><TrackingNumber>789271097255</TrackingNumber></MasterTrackingId><ServiceTypeDescription>FXH</ServiceTypeDescription><PackagingDescription>YOUR_PACKAGING</PackagingDescription><OperationalDetail><OriginLocationNumber>726</OriginLocationNumber><DestinationLocationNumber>3607</DestinationLocationNumber><TransitTime>TWO_DAYS</TransitTime><IneligibleForMoneyBackGuarantee>false</IneligibleForMoneyBackGuarantee><DeliveryEligibilities>SATURDAY_DELIVERY</DeliveryEligibilities><ServiceCode>90</ServiceCode><PackagingCode>01</PackagingCode></OperationalDetail><ShipmentRating><ActualRateType>PAYOR_ACCOUNT_PACKAGE</ActualRateType><ShipmentRateDetails><RateType>PAYOR_ACCOUNT_PACKAGE</RateType><RateZone>4</RateZone><RatedWeightMethod>ACTUAL</RatedWeightMethod><MinimumChargeType>CUSTOMER</MinimumChargeType><DimDivisor>0</DimDivisor><FuelSurchargePercent>7.0</FuelSurchargePercent><TotalBillingWeight><Units>LB</Units><Value>2.0</Value></TotalBillingWeight><TotalBaseCharge><Currency>USD</Currency><Amount>10.15</Amount></TotalBaseCharge><TotalFreightDiscounts><Currency>USD</Currency><Amount>2.5</Amount></TotalFreightDiscounts><TotalNetFreight><Currency>USD</Currency><Amount>7.65</Amount></TotalNetFreight><TotalSurcharges><Currency>USD</Currency><Amount>2.57</Amount></TotalSurcharges><TotalNetFedExCharge><Currency>USD</Currency><Amount>10.22</Amount></TotalNetFedExCharge><TotalTaxes><Currency>USD</Currency><Amount>0.0</Amount></TotalTaxes><TotalNetCharge><Currency>USD</Currency><Amount>10.22</Amount></TotalNetCharge><TotalRebates><Currency>USD</Currency><Amount>0.0</Amount></TotalRebates><TotalDutiesAndTaxes><Currency>USD</Currency><Amount>0.0</Amount></TotalDutiesAndTaxes><TotalAncillaryFeesAndTaxes><Currency>USD</Currency><Amount>0.0</Amount></TotalAncillaryFeesAndTaxes><TotalDutiesTaxesAndFees><Currency>USD</Currency><Amount>0.0</Amount></TotalDutiesTaxesAndFees><TotalNetChargeWithDutiesAndTaxes><Currency>USD</Currency><Amount>10.22</Amount></TotalNetChargeWithDutiesAndTaxes><FreightDiscounts><RateDiscountType>VOLUME</RateDiscountType><Description>Matrix</Description><Amount><Currency>USD</Currency><Amount>2.23</Amount></Amount><Percent>0.0</Percent></FreightDiscounts><FreightDiscounts><RateDiscountType>EARNED</RateDiscountType><Description>Earned</Description><Amount><Currency>USD</Currency><Amount>0.27</Amount></Amount><Percent>2.66</Percent></FreightDiscounts><Surcharges><SurchargeType>RESIDENTIAL_DELIVERY</SurchargeType><Level>PACKAGE</Level><Description>FedEx
+        Home Delivery Urban/Rural Charge</Description><Amount><Currency>USD</Currency><Amount>1.9</Amount></Amount></Surcharges><Surcharges><SurchargeType>FUEL</SurchargeType><Level>PACKAGE</Level><Description>FedEx
+        Ground Fuel</Description><Amount><Currency>USD</Currency><Amount>0.67</Amount></Amount></Surcharges></ShipmentRateDetails></ShipmentRating><CompletedPackageDetails><SequenceNumber>1</SequenceNumber><TrackingIds><TrackingIdType>FEDEX</TrackingIdType><TrackingNumber>789271097255</TrackingNumber></TrackingIds><GroupNumber>0</GroupNumber><PackageRating><ActualRateType>PAYOR_ACCOUNT_PACKAGE</ActualRateType><PackageRateDetails><RateType>PAYOR_ACCOUNT_PACKAGE</RateType><RatedWeightMethod>ACTUAL</RatedWeightMethod><MinimumChargeType>CUSTOMER</MinimumChargeType><BillingWeight><Units>LB</Units><Value>2.0</Value></BillingWeight><BaseCharge><Currency>USD</Currency><Amount>10.15</Amount></BaseCharge><TotalFreightDiscounts><Currency>USD</Currency><Amount>2.5</Amount></TotalFreightDiscounts><NetFreight><Currency>USD</Currency><Amount>7.65</Amount></NetFreight><TotalSurcharges><Currency>USD</Currency><Amount>2.57</Amount></TotalSurcharges><NetFedExCharge><Currency>USD</Currency><Amount>10.22</Amount></NetFedExCharge><TotalTaxes><Currency>USD</Currency><Amount>0.0</Amount></TotalTaxes><NetCharge><Currency>USD</Currency><Amount>10.22</Amount></NetCharge><TotalRebates><Currency>USD</Currency><Amount>0.0</Amount></TotalRebates><FreightDiscounts><RateDiscountType>VOLUME</RateDiscountType><Description>Matrix</Description><Amount><Currency>USD</Currency><Amount>2.23</Amount></Amount><Percent>0.0</Percent></FreightDiscounts><FreightDiscounts><RateDiscountType>EARNED</RateDiscountType><Description>Earned</Description><Amount><Currency>USD</Currency><Amount>0.27</Amount></Amount><Percent>2.66</Percent></FreightDiscounts><Surcharges><SurchargeType>RESIDENTIAL_DELIVERY</SurchargeType><Level>PACKAGE</Level><Description>FedEx
+        Home Delivery Urban/Rural Charge</Description><Amount><Currency>USD</Currency><Amount>1.9</Amount></Amount></Surcharges><Surcharges><SurchargeType>FUEL</SurchargeType><Level>PACKAGE</Level><Description>FedEx
+        Ground Fuel</Description><Amount><Currency>USD</Currency><Amount>0.67</Amount></Amount></Surcharges></PackageRateDetails></PackageRating><OperationalDetail><OperationalInstructions><Number>2</Number><Content>TRK#</Content></OperationalInstructions><OperationalInstructions><Number>7</Number><Content>9622080430005909425600789271097255</Content></OperationalInstructions><OperationalInstructions><Number>8</Number><Content>567J3/E9E7/05A2</Content></OperationalInstructions><OperationalInstructions><Number>10</Number><Content>7892
+        7109 7255</Content></OperationalInstructions><OperationalInstructions><Number>15</Number><Content>60131</Content></OperationalInstructions><OperationalInstructions><Number>18</Number><Content>9622
+        0804 3 (000 000 0000) 0 00 7892 7109 7255</Content></OperationalInstructions><Barcodes><BinaryBarcodes><Type>COMMON_2D</Type><Value>Wyk+HjAxHTAyNjAxMzEdODQwHTgwNB03ODkyNzEwOTcyNTUdRkRFRx01OTA5NDI1HTIzMx0dMS8xHTIuMDBMQh1OHU1haW4gU3RyZWV0HUZyYW5raW4gUGFyax1JTB1SZWNpcGllbnQeMDYdMTBaR0gwMDcdMTFaQ29tcGFueR0xMlo1NTU1NTU1NTU1HTIwWhwdMzFaOTYyMjA4MDQzMDAwNTkwOTQyNTYwMDc4OTI3MTA5NzI1NR0eBA==</Value></BinaryBarcodes><StringBarcodes><Type>FEDEX_1D</Type><Value>9622080430005909425600789271097255</Value></StringBarcodes></Barcodes><GroundServiceCode>804</GroundServiceCode></OperationalDetail><Label><Type>OUTBOUND_LABEL</Type><ShippingDocumentDisposition>RETURNED</ShippingDocumentDisposition><ImageType>PNG</ImageType><Resolution>200</Resolution><CopiesToPrint>1</CopiesToPrint><Parts><DocumentPartSequenceNumber>1</DocumentPartSequenceNumber><Image>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</Image></Parts></Label><SignatureOption>SERVICE_DEFAULT</SignatureOption></CompletedPackageDetails></CompletedShipmentDetail></ProcessShipmentReply>
+    http_version:
+  recorded_at: Wed, 21 Aug 2019 10:10:58 GMT
+recorded_with: VCR 5.0.0

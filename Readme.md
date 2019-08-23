@@ -1,4 +1,4 @@
-# Fedex Rate Web Service
+# Fedex Rate Web Service [![Build Status](https://travis-ci.org/thredup/fedex.svg?branch=master)](https://travis-ci.org/thredup/fedex)
 
 
 For more information visit [Fedex Web Services for Shipping](https://www.fedex.com/wpor/web/jsp/drclinks.jsp?links=wss/index.html).

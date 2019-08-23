@@ -1,0 +1,184 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://gatewaybeta.fedex.com/xml/
+    body:
+      encoding: UTF-8
+      string: |-
+        <ProcessShipmentRequest xmlns="http://fedex.com/ws/ship/v21">
+          <WebAuthenticationDetail>
+            <UserCredential>
+              <Key>xxx</Key>
+              <Password>xxx</Password>
+            </UserCredential>
+          </WebAuthenticationDetail>
+          <ClientDetail>
+            <AccountNumber>xxx</AccountNumber>
+            <MeterNumber>xxx</MeterNumber>
+            <Localization>
+              <LanguageCode>en</LanguageCode>
+              <LocaleCode>us</LocaleCode>
+            </Localization>
+          </ClientDetail>
+          <Version>
+            <ServiceId>ship</ServiceId>
+            <Major>21</Major>
+            <Intermediate>0</Intermediate>
+            <Minor>0</Minor>
+          </Version>
+          <RequestedShipment>
+            <ShipTimestamp>2019-08-24T01:34:25.00Z</ShipTimestamp>
+            <DropoffType>REGULAR_PICKUP</DropoffType>
+            <ServiceType>INTERNATIONAL_PRIORITY</ServiceType>
+            <PackagingType>YOUR_PACKAGING</PackagingType>
+            <Shipper>
+              <Contact>
+                <PersonName>Sender</PersonName>
+                <CompanyName>Company</CompanyName>
+                <PhoneNumber>555-555-5555</PhoneNumber>
+              </Contact>
+              <Address>
+                <StreetLines>King Street</StreetLines>
+                <City>Ashbourne</City>
+                <StateOrProvinceCode/>
+                <PostalCode>DE6 1EA</PostalCode>
+                <CountryCode>GB</CountryCode>
+              </Address>
+            </Shipper>
+            <Recipient>
+              <Contact>
+                <PersonName>Recipient</PersonName>
+                <CompanyName>Company</CompanyName>
+                <PhoneNumber>555-555-5555</PhoneNumber>
+              </Contact>
+              <Address>
+                <StreetLines>Main Street</StreetLines>
+                <City>Frankin Park</City>
+                <StateOrProvinceCode>IL</StateOrProvinceCode>
+                <PostalCode>60131</PostalCode>
+                <CountryCode>US</CountryCode>
+                <Residential>true</Residential>
+              </Address>
+            </Recipient>
+            <ShippingChargesPayment>
+              <PaymentType>SENDER</PaymentType>
+              <Payor>
+                <ResponsibleParty>
+                  <AccountNumber>xxx</AccountNumber>
+                  <Contact>
+                    <PersonName>Sender</PersonName>
+                    <CompanyName>Company</CompanyName>
+                    <PhoneNumber>555-555-5555</PhoneNumber>
+                  </Contact>
+                </ResponsibleParty>
+              </Payor>
+            </ShippingChargesPayment>
+            <CustomsClearanceDetail>
+              <DutiesPayment>
+                <PaymentType>SENDER</PaymentType>
+                <Payor>
+                  <ResponsibleParty>
+                    <AccountNumber>xxx</AccountNumber>
+                    <Contact>
+                      <PersonName>Mr. Test</PersonName>
+                      <PhoneNumber>12345678</PhoneNumber>
+                    </Contact>
+                  </ResponsibleParty>
+                </Payor>
+              </DutiesPayment>
+              <DocumentContent>NON_DOCUMENTS</DocumentContent>
+              <CustomsValue>
+                <Currency>UKL</Currency>
+                <Amount>155.79</Amount>
+              </CustomsValue>
+              <CommercialInvoice>
+                <TermsOfSale>DDU</TermsOfSale>
+              </CommercialInvoice>
+              <Commodities>
+                <NumberOfPieces>1</NumberOfPieces>
+                <Description>Pink Toy</Description>
+                <CountryOfManufacture>GB</CountryOfManufacture>
+                <Weight>
+                  <Units>LB</Units>
+                  <Value>2</Value>
+                </Weight>
+                <Quantity>1</Quantity>
+                <QuantityUnits>EA</QuantityUnits>
+                <UnitPrice>
+                  <Currency>UKL</Currency>
+                  <Amount>155.79</Amount>
+                </UnitPrice>
+                <CustomsValue>
+                  <Currency>UKL</Currency>
+                  <Amount>155.79</Amount>
+                </CustomsValue>
+              </Commodities>
+            </CustomsClearanceDetail>
+            <LabelSpecification>
+              <LabelFormatType>COMMON2D</LabelFormatType>
+              <ImageType>PDF</ImageType>
+              <LabelStockType>PAPER_LETTER</LabelStockType>
+            </LabelSpecification>
+            <RateRequestTypes>PREFERRED</RateRequestTypes>
+            <PackageCount>1</PackageCount>
+            <RequestedPackageLineItems>
+              <GroupPackageCount>1</GroupPackageCount>
+              <Weight>
+                <Units>LB</Units>
+                <Value>2</Value>
+              </Weight>
+              <Dimensions>
+                <Length>10</Length>
+                <Width>5</Width>
+                <Height>4</Height>
+                <Units>IN</Units>
+              </Dimensions>
+            </RequestedPackageLineItems>
+          </RequestedShipment>
+        </ProcessShipmentRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Aug 2019 10:11:12 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - siteDC=wtc; path=/; domain=.fedex.com; expires=Thu, 22-Aug-2019 10:11:12 GMT
+      X-Csr-Log-Transaction-Id:
+      - 8bf10271-2a1f-459b-aada-aa77b7dc3906
+      X-Csr-Elapsed-Millis:
+      - '847'
+      Vary:
+      - Accept-Encoding
+      Responsesslprotocol:
+      - TLSv1.2
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><ProcessShipmentReply xmlns="http://fedex.com/ws/ship/v21"><HighestSeverity>SUCCESS</HighestSeverity><Notifications><Severity>SUCCESS</Severity><Source>ship</Source><Code>0000</Code><Message>Success</Message><LocalizedMessage>Success</LocalizedMessage></Notifications><Version><ServiceId>ship</ServiceId><Major>21</Major><Intermediate>0</Intermediate><Minor>0</Minor></Version><JobId>426e0469c039c5p39b8j471642</JobId><CompletedShipmentDetail><UsDomestic>false</UsDomestic><CarrierCode>FDXE</CarrierCode><MasterTrackingId><TrackingIdType>FEDEX</TrackingIdType><FormId>0430</FormId><TrackingNumber>789271101972</TrackingNumber></MasterTrackingId><ServiceTypeDescription>IP</ServiceTypeDescription><PackagingDescription>YOUR_PACKAGING</PackagingDescription><OperationalDetail><UrsaPrefixCode>XH</UrsaPrefixCode><UrsaSuffixCode>BDFA
+        </UrsaSuffixCode><OriginLocationId>SQZA </OriginLocationId><OriginLocationNumber>0</OriginLocationNumber><OriginServiceArea>A3</OriginServiceArea><DestinationLocationId>BDFA
+        </DestinationLocationId><DestinationLocationNumber>0</DestinationLocationNumber><DestinationServiceArea>A1</DestinationServiceArea><DestinationLocationStateOrProvinceCode>IL</DestinationLocationStateOrProvinceCode><IneligibleForMoneyBackGuarantee>false</IneligibleForMoneyBackGuarantee><AstraPlannedServiceLevel>10:30A</AstraPlannedServiceLevel><AstraDescription>INTL
+        PRIORITY</AstraDescription><PostalCode>60131</PostalCode><StateOrProvinceCode>IL</StateOrProvinceCode><CountryCode>US</CountryCode><AirportId>ORD</AirportId><ServiceCode>01</ServiceCode><PackagingCode>01</PackagingCode></OperationalDetail><ShipmentRating><ActualRateType>PAYOR_ACCOUNT_SHIPMENT</ActualRateType><ShipmentRateDetails><RateType>PAYOR_ACCOUNT_SHIPMENT</RateType><RateScale>0000001</RateScale><RateZone>US001D</RateZone><PricingCode>ACTUAL</PricingCode><RatedWeightMethod>ACTUAL</RatedWeightMethod><CurrencyExchangeRate><FromCurrency>USD</FromCurrency><IntoCurrency>USD</IntoCurrency><Rate>1.0</Rate></CurrencyExchangeRate><SpecialRatingApplied>IMPORT_PRICING</SpecialRatingApplied><DimDivisor>139</DimDivisor><DimDivisorType>COUNTRY</DimDivisorType><FuelSurchargePercent>9.5</FuelSurchargePercent><TotalBillingWeight><Units>LB</Units><Value>2.0</Value></TotalBillingWeight><TotalBaseCharge><Currency>USD</Currency><Amount>167.44</Amount></TotalBaseCharge><TotalFreightDiscounts><Currency>USD</Currency><Amount>75.35</Amount></TotalFreightDiscounts><TotalNetFreight><Currency>USD</Currency><Amount>92.09</Amount></TotalNetFreight><TotalSurcharges><Currency>USD</Currency><Amount>13.57</Amount></TotalSurcharges><TotalNetFedExCharge><Currency>USD</Currency><Amount>105.66</Amount></TotalNetFedExCharge><TotalTaxes><Currency>USD</Currency><Amount>0.0</Amount></TotalTaxes><TotalNetCharge><Currency>USD</Currency><Amount>105.66</Amount></TotalNetCharge><TotalRebates><Currency>USD</Currency><Amount>0.0</Amount></TotalRebates><TotalDutiesAndTaxes><Currency>USD</Currency><Amount>0.0</Amount></TotalDutiesAndTaxes><TotalAncillaryFeesAndTaxes><Currency>USD</Currency><Amount>0.0</Amount></TotalAncillaryFeesAndTaxes><TotalDutiesTaxesAndFees><Currency>USD</Currency><Amount>0.0</Amount></TotalDutiesTaxesAndFees><TotalNetChargeWithDutiesAndTaxes><Currency>USD</Currency><Amount>105.66</Amount></TotalNetChargeWithDutiesAndTaxes><FreightDiscounts><RateDiscountType>VOLUME</RateDiscountType><Description>Volume</Description><Amount><Currency>USD</Currency><Amount>41.86</Amount></Amount><Percent>25.0</Percent></FreightDiscounts><FreightDiscounts><RateDiscountType>EARNED</RateDiscountType><Description>Grace</Description><Amount><Currency>USD</Currency><Amount>33.49</Amount></Amount><Percent>20.0</Percent></FreightDiscounts><FreightDiscounts><RateDiscountType>OTHER</RateDiscountType><Description>Other</Description><Amount><Currency>USD</Currency><Amount>0.0</Amount></Amount><Percent>0.0</Percent></FreightDiscounts><Surcharges><SurchargeType>RESIDENTIAL_DELIVERY</SurchargeType><Description>Residential
+        delivery</Description><Amount><Currency>USD</Currency><Amount>4.4</Amount></Amount></Surcharges><Surcharges><SurchargeType>FUEL</SurchargeType><Description>Fuel</Description><Amount><Currency>USD</Currency><Amount>9.17</Amount></Amount></Surcharges></ShipmentRateDetails></ShipmentRating><DocumentRequirements><RequiredDocuments>COMMERCIAL_OR_PRO_FORMA_INVOICE</RequiredDocuments><RequiredDocuments>AIR_WAYBILL</RequiredDocuments><GenerationDetails><Type>COMMERCIAL_INVOICE</Type><MinimumCopiesRequired>3</MinimumCopiesRequired><Letterhead>OPTIONAL</Letterhead><ElectronicSignature>OPTIONAL</ElectronicSignature></GenerationDetails><GenerationDetails><Type>PRO_FORMA_INVOICE</Type><MinimumCopiesRequired>3</MinimumCopiesRequired><Letterhead>OPTIONAL</Letterhead><ElectronicSignature>OPTIONAL</ElectronicSignature></GenerationDetails><GenerationDetails><Type>AIR_WAYBILL</Type><MinimumCopiesRequired>3</MinimumCopiesRequired></GenerationDetails><ProhibitedDocuments>NAFTA_CERTIFICATE_OF_ORIGIN</ProhibitedDocuments></DocumentRequirements><CompletedPackageDetails><SequenceNumber>1</SequenceNumber><TrackingIds><TrackingIdType>FEDEX</TrackingIdType><FormId>0430</FormId><TrackingNumber>789271101972</TrackingNumber></TrackingIds><GroupNumber>0</GroupNumber><OperationalDetail><AstraHandlingText>NSR
+        RES</AstraHandlingText><OperationalInstructions><Number>2</Number><Content>TRK#</Content></OperationalInstructions><OperationalInstructions><Number>3</Number><Content>0430</Content></OperationalInstructions><OperationalInstructions><Number>5</Number><Content>XH
+        BDFA </Content></OperationalInstructions><OperationalInstructions><Number>7</Number><Content>1043182573290006013100789271101972</Content></OperationalInstructions><OperationalInstructions><Number>8</Number><Content>567J3/E9E7/05A2</Content></OperationalInstructions><OperationalInstructions><Number>10</Number><Content>7892
+        7110 1972</Content></OperationalInstructions><OperationalInstructions><Number>12</Number><Content>10:30A</Content></OperationalInstructions><OperationalInstructions><Number>13</Number><Content>INTL
+        PRIORITY</Content></OperationalInstructions><OperationalInstructions><Number>14</Number><Content>NSR
+        RES</Content></OperationalInstructions><OperationalInstructions><Number>15</Number><Content>60131</Content></OperationalInstructions><OperationalInstructions><Number>16</Number><Content>IL-US</Content></OperationalInstructions><OperationalInstructions><Number>17</Number><Content>ORD</Content></OperationalInstructions><Barcodes><BinaryBarcodes><Type>COMMON_2D</Type><Value>Wyk+HjAxHTAyNjAxMzEdODQwHTAxHTc4OTI3MTEwMTk3MjA0MzAdRkRFHTM2MDEzNjg5Mh0yMzMdHTEvMR0yLjAwTEIdTh1NYWluIFN0cmVldB1GcmFua2luIFBhcmsdSUwdUmVjaXBpZW50HjA2HTEwWkVJSTA3HTExWkNvbXBhbnkdMTJaNTU1NTU1NTU1NR0xNVoxMDU0OTY4OTYdMzFaMTA0MzE4MjU3MzI5MDAwNjAxMzEwMDc4OTI3MTEwMTk3Mh0zMlowMjM2MjgdMzlaU1FaQR05OVpFSTAwMDYcR0IcMTg5HFVTRBxQaW5rIFRveRwcMzYwMTM2ODkyHR4wOR1GRFgdeh04HS4pDicgDn9AHgQ=</Value></BinaryBarcodes><StringBarcodes><Type>FEDEX_1D</Type><Value>1043182573290006013100789271101972</Value></StringBarcodes></Barcodes></OperationalDetail><Label><Type>OUTBOUND_LABEL</Type><ShippingDocumentDisposition>RETURNED</ShippingDocumentDisposition><ImageType>PDF</ImageType><Resolution>200</Resolution><CopiesToPrint>1</CopiesToPrint><Parts><DocumentPartSequenceNumber>1</DocumentPartSequenceNumber><Image>JVBERi0xLjQKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMyAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL091dGxpbmVzCi9Db3VudCAwCj4+CmVuZG9iagozIDAgb2JqCjw8Ci9UeXBlIC9QYWdlcwovQ291bnQgNAovS2lkcyBbMTggMCBSIDE5IDAgUiAyMCAwIFIgMjEgMCBSXQo+PgplbmRvYmoKNCAwIG9iagpbL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSV0KZW5kb2JqCjUgMCBvYmoKPDwKL1R5cGUgL0ZvbnQKL1N1YnR5cGUgL1R5cGUxCi9CYXNlRm9udCAvSGVsdmV0aWNhCi9FbmNvZGluZyAvTWFjUm9tYW5FbmNvZGluZwo+PgplbmRvYmoKNiAwIG9iago8PAovVHlwZSAvRm9udAovU3VidHlwZSAvVHlwZTEKL0Jhc2VGb250IC9IZWx2ZXRpY2EtQm9sZAovRW5jb2RpbmcgL01hY1JvbWFuRW5jb2RpbmcKPj4KZW5kb2JqCjcgMCBvYmoKPDwKL1R5cGUgL0ZvbnQKL1N1YnR5cGUgL1R5cGUxCi9CYXNlRm9udCAvSGVsdmV0aWNhLU9ibGlxdWUKL0VuY29kaW5nIC9NYWNSb21hbkVuY29kaW5nCj4+CmVuZG9iago4IDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkT2JsaXF1ZQovRW5jb2RpbmcgL01hY1JvbWFuRW5jb2RpbmcKPj4KZW5kb2JqCjkgMCBvYmoKPDwKL1R5cGUgL0ZvbnQKL1N1YnR5cGUgL1R5cGUxCi9CYXNlRm9udCAvQ291cmllcgovRW5jb2RpbmcgL01hY1JvbWFuRW5jb2RpbmcKPj4KZW5kb2JqCjEwIDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0NvdXJpZXItQm9sZAovRW5jb2RpbmcgL01hY1JvbWFuRW5jb2RpbmcKPj4KZW5kb2JqCjExIDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0NvdXJpZXItT2JsaXF1ZQovRW5jb2RpbmcgL01hY1JvbWFuRW5jb2RpbmcKPj4KZW5kb2JqCjEyIDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0NvdXJpZXItQm9sZE9ibGlxdWUKL0VuY29kaW5nIC9NYWNSb21hbkVuY29kaW5nCj4+CmVuZG9iagoxMyAwIG9iago8PAovVHlwZSAvRm9udAovU3VidHlwZSAvVHlwZTEKL0Jhc2VGb250IC9UaW1lcy1Sb21hbgovRW5jb2RpbmcgL01hY1JvbWFuRW5jb2RpbmcKPj4KZW5kb2JqCjE0IDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL1RpbWVzLUJvbGQKL0VuY29kaW5nIC9NYWNSb21hbkVuY29kaW5nCj4+CmVuZG9iagoxNSAwIG9iago8PAovVHlwZSAvRm9udAovU3VidHlwZSAvVHlwZTEKL0Jhc2VGb250IC9UaW1lcy1JdGFsaWMKL0VuY29kaW5nIC9NYWNSb21hbkVuY29kaW5nCj4+CmVuZG9iagoxNiAwIG9iago8PAovVHlwZSAvRm9udAovU3VidHlwZSAvVHlwZTEKL0Jhc2VGb250IC9UaW1lcy1Cb2xkSXRhbGljCi9FbmNvZGluZyAvTWFjUm9tYW5FbmNvZGluZwo+PgplbmRvYmoKMTcgMCBvYmogCjw8Ci9DcmVhdGlvbkRhdGUgKEQ6MjAwMykKL1Byb2R1Y2VyIChGZWRFeCBTZXJ2aWNlcykKL1RpdGxlIChGZWRFeCBTaGlwcGluZyBMYWJlbCkNL0NyZWF0b3IgKEZlZEV4IEN1c3RvbWVyIEF1dG9tYXRpb24pDS9BdXRob3IgKENMUyBWZXJzaW9uIDUxMjAxMzUpCj4+CmVuZG9iagoxOCAwIG9iago8PAovVHlwZSAvUGFnZQ0vUGFyZW50IDMgMCBSCi9SZXNvdXJjZXMgPDwgL1Byb2NTZXQgNCAwIFIgCiAvRm9udCA8PCAvRjEgNSAwIFIgCi9GMiA2IDAgUiAKL0YzIDcgMCBSIAovRjQgOCAwIFIgCi9GNSA5IDAgUiAKL0Y2IDEwIDAgUiAKL0Y3IDExIDAgUiAKL0Y4IDEyIDAgUiAKL0Y5IDEzIDAgUiAKL0YxMCAxNCAwIFIgCi9GMTEgMTUgMCBSIAovRjEyIDE2IDAgUiAKID4+Ci9YT2JqZWN0IDw8IC9GZWRFeEV4cHJlc3MgMjQgMCBSCi9FeHByZXNzRSAyNSAwIFIKL2JhcmNvZGUwIDI2IDAgUgovRmVkRXhFeHByZXNzIDI3IDAgUgovRXhwcmVzc0UgMjggMCBSCj4+Cj4+Ci9NZWRpYUJveCBbMCAwIDc5MiA2MTJdCi9UcmltQm94WzAgMCA3OTIgNjEyXQovQ29udGVudHMgMjIgMCBSCi9Sb3RhdGUgOTA+PgplbmRvYmoKMTkgMCBvYmoKPDwKL1R5cGUgL1BhZ2UNL1BhcmVudCAzIDAgUgovUmVzb3VyY2VzIDw8IC9Qcm9jU2V0IDQgMCBSIAogL0ZvbnQgPDwgL0YxIDUgMCBSIAovRjIgNiAwIFIgCi9GMyA3IDAgUiAKL0Y0IDggMCBSIAovRjUgOSAwIFIgCi9GNiAxMCAwIFIgCi9GNyAxMSAwIFIgCi9GOCAxMiAwIFIgCi9GOSAxMyAwIFIgCi9GMTAgMTQgMCBSIAovRjExIDE1IDAgUiAKL0YxMiAxNiAwIFIgCiA+PgovWE9iamVjdCA8PCAvRmVkRXhFeHByZXNzIDI0IDAgUgovRXhwcmVzc0UgMjUgMCBSCi9iYXJjb2RlMCAyNiAwIFIKL0ZlZEV4RXhwcmVzcyAyNyAwIFIKL0V4cHJlc3NFIDI4IDAgUgo+Pgo+PgovTWVkaWFCb3ggWzAgMCA3OTIgNjEyXQovVHJpbUJveFswIDAgNzkyIDYxMl0KL0NvbnRlbnRzIDIzIDAgUgovUm90YXRlIDkwPj4KZW5kb2JqCjIwIDAgb2JqCjw8Ci9UeXBlIC9QYWdlDS9QYXJlbnQgMyAwIFIKL1Jlc291cmNlcyA8PCAvUHJvY1NldCA0IDAgUiAKIC9Gb250IDw8IC9GMSA1IDAgUiAKL0YyIDYgMCBSIAovRjMgNyAwIFIgCi9GNCA4IDAgUiAKL0Y1IDkgMCBSIAovRjYgMTAgMCBSIAovRjcgMTEgMCBSIAovRjggMTIgMCBSIAovRjkgMTMgMCBSIAovRjEwIDE0IDAgUiAKL0YxMSAxNSAwIFIgCi9GMTIgMTYgMCBSIAogPj4KL1hPYmplY3QgPDwgL0ZlZEV4RXhwcmVzcyAyNCAwIFIKL0V4cHJlc3NFIDI1IDAgUgovYmFyY29kZTAgMjYgMCBSCi9GZWRFeEV4cHJlc3MgMjcgMCBSCi9FeHByZXNzRSAyOCAwIFIKPj4KPj4KL01lZGlhQm94IFswIDAgNzkyIDYxMl0KL1RyaW1Cb3hbMCAwIDc5MiA2MTJdCi9Db250ZW50cyAyMyAwIFIKL1JvdGF0ZSA5MD4+CmVuZG9iagoyMSAwIG9iago8PAovVHlwZSAvUGFnZQ0vUGFyZW50IDMgMCBSCi9SZXNvdXJjZXMgPDwgL1Byb2NTZXQgNCAwIFIgCiAvRm9udCA8PCAvRjEgNSAwIFIgCi9GMiA2IDAgUiAKL0YzIDcgMCBSIAovRjQgOCAwIFIgCi9GNSA5IDAgUiAKL0Y2IDEwIDAgUiAKL0Y3IDExIDAgUiAKL0Y4IDEyIDAgUiAKL0Y5IDEzIDAgUiAKL0YxMCAxNCAwIFIgCi9GMTEgMTUgMCBSIAovRjEyIDE2IDAgUiAKID4+Ci9YT2JqZWN0IDw8IC9GZWRFeEV4cHJlc3MgMjQgMCBSCi9FeHByZXNzRSAyNSAwIFIKL2JhcmNvZGUwIDI2IDAgUgovRmVkRXhFeHByZXNzIDI3IDAgUgovRXhwcmVzc0UgMjggMCBSCj4+Cj4+Ci9NZWRpYUJveCBbMCAwIDc5MiA2MTJdCi9UcmltQm94WzAgMCA3OTIgNjEyXQovQ29udGVudHMgMjMgMCBSCi9Sb3RhdGUgOTA+PgplbmRvYmoKMjIgMCBvYmoKPDwgL0xlbmd0aCAyNTYwCi9GaWx0ZXIgWy9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZV0gCj4+CnN0cmVhbQpHYXQ9bjlvZzVQJnIsaVZyI1o0KiZkLkdYPW85W2dEQW9RPTxdbnIsVW4xO2RuNz1RSyplRzZeRmctXmI/Ylw2Y1dKQjxyWW8oVDtEPWxUXQpXKiEnJC5lWnU2OjZXVWRaI1dUUjAuYVkvJD1fT1dPMzxcaFl1TzdhPlNXa3BYS0dYOUhIJ1dgU2Q/RSk7IyIvNzdfKDA5VWwhRFxVXVBFZwpHZlZuaVE4S1BJazk3bE1OI1Y1dCpgYXEkLyllSjptaEslXXI0Kkc0aSVGcSFQMHVbbW86IT9JaD9rNFItQUlSM25iKGtjcDBNUmQ2W3BDUQpYV01GW0dXdSY8bEEqLEhbIVgoMz4mVVFzUDFCZCFLNyFGTWlWVGIuO1AocERsRl1uJjtUOU9rODZAYElMViIwYSFxQkFIYmFYOF47Tls8QQppJThJMyQxXCNcTFZzI1A7cDpDRjdjcjVpXktbSD5RSEBOXV91QiUpMUo7Nmwhc1k7NSVGO0JMSnI/YzsjKi0mY0JQIU1PRFwlcGNWcnVbOApMQDkhYWA0TTQyZ2c0Piltcjo0U21DUF5vcGgwS1dNIV0pO2lydHIuNTMlUzBLXGJgJFYzSysvXCptWzJNPVY6UjQtcG9xbihNMFZfaiwxTQpDajFCRFBYLVw6ckVUZHQrbGZrRCdUciZTUSYmLmE1S2s6LyN0SCMoUFVtbGY+UipRJ0E0V0lrPjo2UixJQypRVWxsI1E6LSdMSVopYys5UgprSCQ4OWNHRHM+PT9qWklRT09oK1BgSV1BQGNLI3FwKFprTyg0OWlUV2pBWk0pTi1IIU5tI1JlXCk2JVlHQEoxcDNkZ2djRmI6V3VQK0BNWwo3JSNuTmFIQy9VOklANlpaUT0+OlUjMF9gckMpZ0I3Yyhoaj9naUhSTiYnaDZcKGZfdTMiNVx1KyJlYFRoLU50cCpuVEdEPnAlcC5oYF49TQpyU1BQamEpQG1Qb2dNQ2lcKyU6UTQ3akkoUWFqU1EtWjFPZjtnUE82ZkEjJWE7JFpRSDonMCYuQWRzc0YjO1FlNmE/OCVQPTUzVWheRGVkTgo4Ym4nLkJdaWNXLWRLPV1bUyEodEl0PlI3W0FSJlUqU3A9NV5ZVSxRaWRTUmovJTJxKDhZb0VjKTBEamheZCFqM2AjciVPTCVmUXBeT006QQpba0htdUdlJmtLX29iTFlOWzdoZTpJPUJBY2VOdGwpPDNHQ1ZwRlp0Olh0KjVpcyxNXk5PW2lYVCU1ZkVTPVc4aFA2TzxrOFhVLHAkJHMwWwpgRmlPR0xkcTZITV45Rj43JylGPFhySCxTRm83NUpmblovKzkiVXNnNiRDJ2VhNFZNVUYoVlArN1A+VkUpXj9eNVVFQnBRWVU6PzMuYF4uRgpZSFxUKGNUZSMnbHU8a21MRj5SNmQhQCsrbT5tL0RRNEU7S0I8L3FWUSgiYGZKUExCWWElLl5QQzZuUSpcPWYqUElJK2s9Km5gT0YmUGJVRwpXU0kvO0giV3MsR2EyN2ZRNUFtUypwazNbOSg1PTchYHF0VlFcdSIuQTJOIW1dIWo/Sj0lYHVeXDMtMjtbSVlgYEhsWzNsRjw5VUZWcGoxSApUY2RHZUBTb2VdSTJBZmAnSGtOWUA3RVBQLypHc1hpVSlsRz4lMkckVSxqKzlnRCtma19JNTdRVExlU3RYJkA2dCdtc1pDMF1qb1BrSkNsPgpGP1RnN1BwPClDblk/N143N0cnRkJdbmJdZFdJJjgjPm9RXi5vdWQmWGhkPTREQzBaZVQlTENZW2BJRDJtPGdsaWo3Nz06J1lEL1NqTlhNOgpxY2xsJWRVJTJaPWA1VEQ9QF5EYS9pZ243LGQqQDlnVzhOQSs9OCU1MXIzMHE2WmdgNDtHKlVjNDgrdWBAKzhBdEVjbDdeMUBEIl5icDQ0OApmISZcRT8nKzVzS0RrNFRhZFlwNHAwZUcqTm1RTTxuRHUiMD4mKy8tYzojOzdOKUtyQlchJC4pJGRhKz4mKSVvLjAxMDwwQ1RZRipRPyRHSgolZXRyTDs2VWhDInEuUVZBIS4+QScvbWY0PUQ4M1tVL1JzTkBVczsuPGdVVSpDVG5BUEhNMDMiWWdRXioraltyazspLygmMTw+YTFKN0gpUAo/QjlMWSkhL3BqPyMpI1dRWVZHN0IuSWVTT3VKXkdFI3FiTUNWamJfZEpfN286aHFYSlJ1YCU3NFg2JHRBUSUsYCRkZSc/QFMoKCIvXzwnYwopSVcoRTlgM2g1Q1onMjhMODM9J0oxZyM8YERiRGhWPkRiLDQ6XGpgRzkpdHFBJyFbU3I+KWQzKWlpOlRlJGI7al9PLkhvISVZL1RrayJIMgosW21YWlNrRUlmMiNycCw2QFJHaDpLVVcoT11sTTlSOVcwI2A/OkkoWz9hRz9sbnB0SlZLIUYzQVZWYjVeIWU5RS9pPUo5XSg3WkNjPW5bNApIYmxiakwzdC9pM0oiVzBRPCFNPDtNMEMkRnVsNmI0XyhXSEJASSplXyoval8uPU1qWiUmL0pWQmplJiM9O1ZTKm5WYGJPNF5wL20vOC1WIwoiP29zc046aVJmYXEzMC5faWlFWGRyZS0uX2dzWDxKPGVcblRpSEBSYE1SajRXYCZcdGYkOT4uQTkjN1ZiSkk4TGRgU2AsVFhAbD0zaCUqNApOSDwkWUBVWilqcHNBOHEpQk1QZ29ncDRVPihfTkJoJVZmSzJrIl1bVEInRl9TWmBEXEs/cWJqak9JR09NT0YpMUdkXEdcLSdjLVJlOjlwUAo6ODxOYFRjKW4rVV5ZZ1gkVy0jMzFhJjMiXGs9TlArVSlqJDpScVBTS3I4Vmg8YDI7MGRDTjhPI2ApOD0oRFhHUEMwNTtWcSdTXyNDdWI4ZwomaVouTD5eRVs7TnBnIzZQZ2M3Nz9tZVkqIWJqTytrbkUvS2FYXHFqRHFgczZCWTc6K0Z1UzM2cXUtNSteRSVjOkBgRyVLYjFxLSkkOi8xKgpHWj5XbTQ3J3IjNUtucSRNMjd0SzxqSyVNQUtPME0tYyMiSVo5LGNRPnNiQkBfTUlOMTxcYCtkZENBVDJNaGVpN11aQidsLCIkL15FUWcyNQo3PGVYUiZiNGJEWWUmJChpLz9WRzgiPW4mYWZeOWJFMko1Wio0KydBa3MnWDgoT3U0WnM0aSwnY19oO2dyP2FHO1kuZmxIRDMoZGolcyIyUgomaG88QHJybXI9VSU9QzhQX3U7NVg8WFNhM0AmK1dgRXNUbGM+MWAmKTVoPkFTXkA1SzVuWUg0SyM8XWc7MkxmbXJVXEwhXl0qamtCJFRvbQpZWyleVy9BKGgkNlkxN0IkcyUlIzNyJ14nYiMzcFE7YjZjQm1tZ0lYKzBJYmJrbH4+CmVuZHN0cmVhbQplbmRvYmoKMjMgMCBvYmoKPDwgL0xlbmd0aCAzMDI5Ci9GaWx0ZXIgWy9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZV0gCj4+CnN0cmVhbQpHYXQ9bj5CQTkpKDw+O2dfZnNKT0dyUkpbN2VdUjRkX21galp0WF86KWBZYG5CYXNfXlokVnVUa2tYamBhXEVqJkVkISpENlxHRi86SjQ+UgpDSXNnME5cRCoxX25UMTojZkAvclM5Jk0mN1RNbGZnLG5VVHFpTlpJbmhuUkJCVSVdbz9UWGJPaE9ZQ1ZkSlJjVSNyTVpoJWhYS1IlbWNeVApkYl1dXmBfbVtKLFNKNycyZGM3KWJObkVmQFFaczo7MUo8JklnLTE4azMoOm1tcDgtVj8qYFA7akI3ci9WLkRUQzpzWUE3WiRKdDNWaURWbApOLVYmV2hwPzE8VldqcnNNUi1xcFwsMlM8XjQzQiRzJih0RkgyOEc9QGVfSEY0UXNlXHFPK21dTjlCXjpdY1UkJjdiOl9GZERhZFEsL2w9cwpRRGNKcSFfXlxrXDxzcktoazhBKSpxcGlTIylganVcZS5CW24pN1soN2cnMztVYy5mMkxZOV4mQGkyZ1tNRytERFojLykhQjM1XWhPPD4hVApJXz83N1xCVDpDaW4+ImpKYnRGOCohc2poK2lNNVhnYmJtNS0hQig7QSYjay5aN1guSCIhR11PNypPZElLWDk5RDBnYzE6aERUbmtjN2lANwpXQUomMUxoYnJLbz81LD5vO19zY0NEW1ZxViU+cSQuUGxjPEJtVExDKkJHLjElaD9laSRuJkxUcDxFSm1yaG8pJCdaI1EiZHRhbzdxVFBsKwpzKWpicktXLSxIRTIsRiUwJmpNbD0hPDRJQEwkaCExUzJmRGRFUWJBOFU6PDcsPkMhT0spNXJdVW1BSCcvIjlyaCUtSl1iayldYVM5W1JGbApdWV4vSiowJS42MkBdUXNeR20tLV0mQD0kKm9jX05tOV1yTG4lYC1hRTVMdFlxbixWbm1rQjwyUDRKS2MxcWw/al9aVTVeIktnclRKQj1RRApkMSIjW01YWSdVS2c/YTljXk9pLWo3RTVgS2ZiLEskMTtWV0gmNi8nQS8lZyQtSGZdL1NZaW1MNl5IalguPzRhNT5HW1ReUCFeXjw4WTk/VgpFVlRJU1FBQEpUbF0jRU1hWj86IztDXyNPOEFkY3BuXlpQYjVdakhGUyFrWmJqNFRPZERtSzomUk1RIV9OYEknQEJzY2NXWkxhOVZZYDlGIQo+bWclRTkiSCEkUEBRRzxVMXJFNCZmYD8oTjxlIXM1ZUJMWVQuYkwxOCpsbVZvNGxnZ0M9U1xXZXRWOGFoWCYzOStIKjIrTTg2V0JNT0RaWgpVXT9wRExxUUs9XnAjRilnOy8mdE1rXmxgRDpfKjEvQERYIzNoay9QZDkoKHU/LnR1bWcsPCc8bnU9cEM2aTRsU0d0SidxNzE6TkkwZWNJaApyR2NNQkZMbjVWUmkkc0MwVkxMTEw7QjJYWEZuMS1eXU0iSDYzPCpjRTFSYm9LMVQ9OTVhZWhfSmlicWYzbypwRlY6RkVpKSddSiQxM1JtbwpnMWdGbEEjL01lXz10YlVYYmFtZFVdP3BEVzNTJS1NLCVKNmI4ZCQiImEhaHRkPW5FKTwoXmRTNFFXcWUkOmh0UVFJOEI4YE1GNHJeKGMqLQpGYDoyS0RdNjpLaV1KWGlhITUoXT9POTAvZDk4Umo6Qz1uWks4ZXNOND1MOS5VKzBfTj46cDRqWSckPVgpUS5SIzxUUzE5I1c5ZzQnNDNkQAotQ1dNSjhyNTxWJGdpJmVRTkY1aklvZWoyQFo4UkAlYUw3PkU4VmwpK1YlUz1QaDxzI2RjbyRxZlopUHAiUSEjRm0yYk9pMyxQKFc7MEEvPwpVX0YkTWVVYCFEITAvJ29TXD5lZycxWiEhMCpWLEZlTVMzV1VPWmBQZUE2RllDJFEmRTdsK2U5KCc6OlM/JXNKdVAmaGpSVFZtSkRnJU4iUQpPT0JyUzAkcidCSF1WVzRMRl44czk/InVES3E5JmhUZkpRLz5JNEFRbS4kKEsvdVpKJ1M8Mzk7JjAqaiU3OWQsMSs/USNePkk4bygrWSdNUwpdTVY/Tzg0ZS5uOkNGR1M3KUNrIyJrNE0lW0Z0ZTE9b2FaRFVZMyJDJGc5P1dvbFsiJjttNz9fL2JIRl4kWUAiPytiSkhrLz5iJkhkbT5WOApGZjwsLihrMXJIcGVWPSVjVFxeI09wRzohJjBRbWlbOUd0UkJGNStnKFssUVY1ZEItQiRYb3U8N1FfdCItRUgyNicsSVpXQ3FtVFIoJzY+NQpvOlc4ak4lWlIhbzpXOGo9RDYjYlhJRVVdIWlcciliTjlRbCJCYiw/K08qOkBlbXR1LV4ocGQ3OCFnLCo9cFdJcGNcMCJKMElWUCZKXWVLKwo0LVhwK2BuKDhDJ1lOOkYpWzVQKUxBLWtHWUN1c0ZQcyxNTidXLjtSbGEhXkohOU5iI2w+JERhUGRsMFVhO0dSYDhhOyVpWTZBIzZIZFhCbAopQnQvO0hJIm9iJGFHZHBxMylAbDoncjY+UC8iMlM9SyU2LT0nbD05UmNETj9mKWlPYkJIOmwtPEdBPi8+RnAzb15kOT8tazxpU2EhTk9qbwowTnU+UWBaNWIjJE5dUFtPYlUqUEVJNFNMISdNbjYjZVM2UyQuZF1wSkUxcyxvc0c+UlhiMnNUVyM5Y0pqOHFJcitEZUVENy5ub2dDWDItTQpOVWlrVnFmTWRZOE1SKEdsdFEwPFNlXzxabUhXKmtsPiREQEwtO0U2KlpkWT9LT2k0RyZtbCRPJkQjMiRccUk/bjFYLXBQOk5DSTBWcj1iVQo0Y2xHPVZJM2c4VixHKW09Pl49LThmTllcaFNKckZVN0cnWUE5Mj5fR28/bzElJz5SQyxcSUgoL05LUSwzTkFSLjAuKSldcVNrcUhQQ0E5RQpdTyI6b2RuZjJtcjFdNiljNEM9QjVBREcyOi45bmlsI10ldExzXVJeYj0xNFQkdT9DU0xQc2pgcUosYEpaU2JsJ1shNylSYyZYcVprQVEuNgo3ViYtPTBGPEJlT2dkRVNIb3E/NVNkYXNGQm1BZjBNMz9zNWglbSVrRUwxT0pGVCErcGRiRlozPTtLZWMmQk8xc2xmTWhYVldhXklJcTZPWQpITU42Qj9Pb1Q5OGFrJFhaPDNnRklHMnBVZ21mZkZvJCQqKlJxLEgjRTFhOFtjWGAlJ01FRj0xTmZyL09VOmEuaWdEJ1YxMllYWE8nTlticwpfOy1UYVpoOjFoMkhjL2QxbyxDTUI6PTlyPlpSWUNLTFhYVVpzOkxdPC4pKUpZLy1EdVxsc2B1RWJNWSg2Q1MkLlUwMy84YVxWNicsUjlbUAooSkU5IiViT3JMZ1E9VFwvQDQqbGI7K2RrKmhnIT5KJDVuUl5iSEAyRU0lWmElWkBuVVVOYzU3SV87dFc4WCQiPF5rXF5qNlIwSm1zLGxIcAokWVllZitfcU1hUyk4ZWcrXXVHbmkwTSVQNTdHZjo9RHA2aGRJZCxqPWY5V1tDbUFrO1RqOzlQUVlgKCxTdWd0dTtiMDVfKmZQPDJZMU1rZgpmWFdRayI4b2wrUVYka0hVP2xMMG1ZLU0wQTxoTzhtPipxQE50RCRaZnUiL0UmPkBlO1FiViMoTkUqJnMwX1RbYTVfKltHVTE7KmMpLmptXwpjaUE9RjI/OzI3VStTU0dnWFpKb2s8MWAjWWRbUC1QKXJ0Tj0oYStEOSNyJ2poRz9yPUdTR1dxSytEVS5HXl0vaV1nNFREblIqLU1ZSkRuXgppc0U8LT80Pl8uUyxAMTgjbzsnTmZbRj5dVFFKYSgxSy8taUNkbGkpUDRkOk1XT08mUGg2K1E/b0lnLjk0QV9mSXBTVlNSUHI1Vz01al1NOQonb0gwRjNAbE9jP1dyXy5XNmBvXSRGRkJfMjIjRjooTV1wWDYtYkZwbXArTis7OCEhRSYpP3A5M2NyRVhdJzUya1NlNSMqPD0jOlU2QV5CRwpxPGY5NzU5VD8mPUY8WWRCYCVSN2xcR0tCMGM+Ul5+PgplbmRzdHJlYW0KZW5kb2JqCjI0IDAgb2JqCjw8IC9UeXBlIC9YT2JqZWN0Ci9TdWJ0eXBlIC9JbWFnZQovV2lkdGggMTE4Ci9IZWlnaHQgNDkKL0NvbG9yU3BhY2UgL0RldmljZUdyYXkKL0JpdHNQZXJDb21wb25lbnQgOAovTGVuZ3RoIDQ2MQovRmlsdGVyIFsvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGVdCj4+c3RyZWFtCkdiIi9lSkldUj8jWG5Ya1Q2QT5YS25EYldCIk1aRWFqUHBkNF0nKF5AUmx0ImtCIlMwJGYlPz1tPTRDOzsuJE4oalJjWVIlc2QmbDkkT3ReCikmNz1MKDctZXFxZUAuKC9TQzk4NC1mTFhlTFo1cWNaNWxBRUI1NT4zQDA9ayI7UmgyaEJjUUwzJko/NW9bY0gwYlNGTl48OztANDFTWTltCmMiWkk9WWwjYzQpYF8iWWxtTjMlLkEubE5TYFZlL1k8JT8uNygoKS8uZEJbO2shSlslJyVESlxJPythNzo1b05rWVxxRVM+MzxJNWJabShJCiVkPEBCKThEYnQzcEtHY2xiUWsxJ2laVnM3Tk0wXG8mUipxVT5nSHUtRnJDa2g8a0hGRypcJE09X3NWLy0kXEpGOmUvPz5mWEErQ0NtcERlCmRTUDZHY3UsXFgnQUw9YTVKQ1s0NkcuaHAyPVU0ZV4kZW9cUSNiKm03QzgkLUpBKGNaP1lgJ0M7NkpwSGVQbFwkSEVDIXVeKlFhKzZnRU1rCltmRVYqYi4jPnByPi1XU2YjPmgmVz91a2tUc2hZYD0vWC42NkEqO2Jpcy9kZ0BRWFhzcjhtO34+CmVuZHN0cmVhbQplbmRvYmoKMjUgMCBvYmoKPDwgL1R5cGUgL1hPYmplY3QKL1N1YnR5cGUgL0ltYWdlCi9XaWR0aCA1NAovSGVpZ2h0IDU0Ci9Db2xvclNwYWNlIC9EZXZpY2VHcmF5Ci9CaXRzUGVyQ29tcG9uZW50IDgKL0xlbmd0aCA3NwovRmlsdGVyIFsvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGVdCj4+c3RyZWFtCkdiIjBKZDBUZHEkajRvRl5VLCJIVHM5RUlFOzBBVCxfRSpMWiVvQDdKbDVWO0gnQ3M9VHJxRGFILjRCZiNjNE9WVDsoZCNmPEdFOX4+CmVuZHN0cmVhbQplbmRvYmoKMjYgMCBvYmoKPDwgL1R5cGUgL1hPYmplY3QKL1N1YnR5cGUgL0ltYWdlCi9XaWR0aCAyMDkKL0hlaWdodCA3NAovQ29sb3JTcGFjZSAvRGV2aWNlR3JheQovQml0c1BlckNvbXBvbmVudCA4Ci9MZW5ndGggMTQxOQovRmlsdGVyIFsvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGVdCj4+c3RyZWFtCkdiIi9jaUdSW0glIm42UDA/alVJK28wNyVtRy5pJXJSIz1fYDZNSHQ4WFliNm9ELzRbamowSFheQWFBX2xoM2Exb2ZsZzI1NSpVb0AvPjQ1CkhfaHAoLWA2YT5fI2M4MmtAbC86PD9IbGkkSlpjZmxbRFtDTS9zbExsTFAjO0hmTD4rM0xzJEdYcEA+Nmoqb3NhaWpGQy9CWlYsRDonKk0yCjs9JmxRTCdmaWgvTyZCYy9LM0hvYG9WTkFURj5NIzYzcj8hVlNAMjUhZGplJC1ldGA9XkYvTU9SRFtGL1w1bEdoRlZQN1VtNl5aLDdWZC9iCmZLaF0lcCZEZTcmYjJOQ1ooTmY/Wm1Sa3UxVUk8WTsuZ3BaTzBzUFFTQThkVUM8bTxGJTJzMlwrQGdEP29CKU1ZXEQyIUEvYmBoK0UrL1pqCkQ2U0E2TzNCbFFOSWtiNWkwUihbOyJaK3RhRjY4NFokXC9ILnJaZTVlXVFKTi5OWUQoRURyIS5vMDBvOl00MGEkXEMxc25NMSg1cV1NUXU+Cj1YNVU2UFFEaD89J2ZFJGJrXSJLMy1KJGxmQChnPmpFNDpjNTM6Wk8jaylvUVojPGdIOUcncTMjQWBtJ2ElW0Y1cVMzOyU0VypCJFY1UzhKClprNGgsKmlnNUdlUls0Yy8tXiZwQj1cTlgicmNXZVdObD5HXFkpc1tGJzdlOSs7P3BhUWFQV2I6Q1lHXzlkbDNbMXAlNidXKl5zT1ZNY1BpCiF1bCEjZSMmZUJAKVhERCZwcj01RFVRaTUmOy9wcCdRZFtGX19vPmBzKjo4UDo/X2NlTFhxUmxvc2hKSiVbai82REFLJVxkYSJGMi9GQiZACltrRDVIVVAkajBjKTNfMUhsYkFxcUkrOFliKkBScShcMnNwbTE/OWtSOE9FRjI/YTJ0SE5SXjFraDtQLmltISdHLWhBLmVkXi08UGcsVCJRCmFzQkQnZzBvSjgpXTQmVSJdTXM4JjMrcFk0OSZGYFY3NW4lPFVqN2gqVSMnZSYsRiQtaFVZMCRKKCZHcTlvcFlwQmU2RyFcQ1plalRCKz1ZCmx1OiFSSHJBLTxAN29YLiJmXk50P0BELUchNUxRPEEkNnFxUkE8OCtlM0lSQCdkKDhlWmhpKl5rWyRPZyEiZSg5KUkmSCdTUlYrWWZvT2AzCmFGVydqM1oqZW8yUGJlcVRRLC9ALkFbKUJdOmZIZWk3S1pyUkUxSiE+RDpMRz5QIkFuJTtZNFskPGt1Zj9yZ1NAM1BDKSNkQ0YhKlRJKipTCks5W0VmZGxdWzhXP0FjI0o4Z1NdKyM0PmMvOCZbLUQuJ0koVjgtdF1maiMnSE5QL0MpP2hCZ0c2TnU9Uj5URTo2OSdYNmw+Mm8vZyshKkR1CmprUmJDImclb10qSlcudDtdWFs5JzpHXl5KKmBpPzVYMGlvXXNtKnAwYTByU003Z19wQHRPMilQTUEnTVEpNmNkSiYobydWXWJKaklGTFFiCl9dWXRcLzE+KDUqJVNqbzM7SFR0T1EsbzBcP2hYNG03S1w8UEVhZCFWQjl1dF0zIk8jXExxSSluN1A8W18jUHRPP3I8OU4vRE1ZUDpIRWhkCktjTEMvNGhucmRNcCslajUzPUQoX25pcV9DOFt0Q0c3MGw0SDcoMyNUOmNFbEthOD1mMGRPKGdyMzVPLkRuWGwsaUo4dWZuYTVJKUFoWW1vCkRDYmFHMEBhcnFebSVmOzlTWFcjQG4uRGBfIVlKVyNpZlxWPUouMTZtOmBFIUNYK1pdM1QvJmE3Pkg/MWVpN2FYcnU0VmlxWyUjbkEiNywxCmcnLkksIjg5TT9OZDMuYVFuNFtpMWtxSzcvWTZfXElDJTZhNiF0Iml+PgplbmRzdHJlYW0KZW5kb2JqCjI3IDAgb2JqCjw8IC9UeXBlIC9YT2JqZWN0Ci9TdWJ0eXBlIC9JbWFnZQovV2lkdGggMTE4Ci9IZWlnaHQgNDkKL0NvbG9yU3BhY2UgL0RldmljZUdyYXkKL0JpdHNQZXJDb21wb25lbnQgOAovTGVuZ3RoIDQ2MQovRmlsdGVyIFsvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGVdCj4+c3RyZWFtCkdiIi9lSkldUj8jWG5Ya1Q2QT5YS25EYldCIk1aRWFqUHBkNF0nKF5AUmx0ImtCIlMwJGYlPz1tPTRDOzsuJE4oalJjWVIlc2QmbDkkT3ReCikmNz1MKDctZXFxZUAuKC9TQzk4NC1mTFhlTFo1cWNaNWxBRUI1NT4zQDA9ayI7UmgyaEJjUUwzJko/NW9bY0gwYlNGTl48OztANDFTWTltCmMiWkk9WWwjYzQpYF8iWWxtTjMlLkEubE5TYFZlL1k8JT8uNygoKS8uZEJbO2shSlslJyVESlxJPythNzo1b05rWVxxRVM+MzxJNWJabShJCiVkPEBCKThEYnQzcEtHY2xiUWsxJ2laVnM3Tk0wXG8mUipxVT5nSHUtRnJDa2g8a0hGRypcJE09X3NWLy0kXEpGOmUvPz5mWEErQ0NtcERlCmRTUDZHY3UsXFgnQUw9YTVKQ1s0NkcuaHAyPVU0ZV4kZW9cUSNiKm03QzgkLUpBKGNaP1lgJ0M7NkpwSGVQbFwkSEVDIXVeKlFhKzZnRU1rCltmRVYqYi4jPnByPi1XU2YjPmgmVz91a2tUc2hZYD0vWC42NkEqO2Jpcy9kZ0BRWFhzcjhtO34+CmVuZHN0cmVhbQplbmRvYmoKMjggMCBvYmoKPDwgL1R5cGUgL1hPYmplY3QKL1N1YnR5cGUgL0ltYWdlCi9XaWR0aCA1NAovSGVpZ2h0IDU0Ci9Db2xvclNwYWNlIC9EZXZpY2VHcmF5Ci9CaXRzUGVyQ29tcG9uZW50IDgKL0xlbmd0aCA3NwovRmlsdGVyIFsvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGVdCj4+c3RyZWFtCkdiIjBKZDBUZHEkajRvRl5VLCJIVHM5RUlFOzBBVCxfRSpMWiVvQDdKbDVWO0gnQ3M9VHJxRGFILjRCZiNjNE9WVDsoZCNmPEdFOX4+CmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDI5CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMDQgMDAwMDAgbiAKMDAwMDAwMDE4MyAwMDAwMCBuIAowMDAwMDAwMjM1IDAwMDAwIG4gCjAwMDAwMDAzMzMgMDAwMDAgbiAKMDAwMDAwMDQzNiAwMDAwMCBuIAowMDAwMDAwNTQyIDAwMDAwIG4gCjAwMDAwMDA2NTIgMDAwMDAgbiAKMDAwMDAwMDc0OCAwMDAwMCBuIAowMDAwMDAwODUwIDAwMDAwIG4gCjAwMDAwMDA5NTUgMDAwMDAgbiAKMDAwMDAwMTA2NCAwMDAwMCBuIAowMDAwMDAxMTY1IDAwMDAwIG4gCjAwMDAwMDEyNjUgMDAwMDAgbiAKMDAwMDAwMTM2NyAwMDAwMCBuIAowMDAwMDAxNDczIDAwMDAwIG4gCjAwMDAwMDE2NDMgMDAwMDAgbiAKMDAwMDAwMjA2MSAwMDAwMCBuIAowMDAwMDAyNDc5IDAwMDAwIG4gCjAwMDAwMDI4OTcgMDAwMDAgbiAKMDAwMDAwMzMxNSAwMDAwMCBuIAowMDAwMDA1OTY3IDAwMDAwIG4gCjAwMDAwMDkwODggMDAwMDAgbiAKMDAwMDAwOTczNSAwMDAwMCBuIAowMDAwMDA5OTk2IDAwMDAwIG4gCjAwMDAwMTE2MDIgMDAwMDAgbiAKMDAwMDAxMjI0OSAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JbmZvIDE3IDAgUgovU2l6ZSAyOQovUm9vdCAxIDAgUgo+PgpzdGFydHhyZWYKMTI1MTAKJSVFT0YK</Image></Parts></Label><SignatureOption>NO_SIGNATURE_REQUIRED</SignatureOption></CompletedPackageDetails></CompletedShipmentDetail></ProcessShipmentReply>
+    http_version:
+  recorded_at: Wed, 21 Aug 2019 10:11:13 GMT
+recorded_with: VCR 5.0.0

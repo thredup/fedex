@@ -313,12 +313,12 @@ module Fedex
 
       # Parse response, convert keys to underscore symbols
       def parse_response(response)
-        response = sanitize_response_keys(response)
+        sanitize_response_keys(response)
       end
 
       # Recursively sanitizes the response object by cleaning up any hash keys.
       def sanitize_response_keys(response)
-        if response.is_a?(Hash)
+        if response.is_a?(Hash) || response.is_a?(HTTParty::Response)
           response.inject({}) { |result, (key, value)| result[underscorize(key).to_sym] = sanitize_response_keys(value); result }
         elsif response.is_a?(Array)
           response.collect { |result| sanitize_response_keys(result) }

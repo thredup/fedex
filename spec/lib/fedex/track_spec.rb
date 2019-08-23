@@ -30,7 +30,7 @@ module Fedex
 
         fail_options[:package_type] = "UNKNOWN_PACKAGE"
 
-        lambda { fedex.track(options) }.should raise_error
+        lambda { fedex.track(options) }.should raise_error(RuntimeError, "Unknown package type 'UNKNOWN_PACKAGE'")
       end
 
       it "allows short hand tracking number queries" do

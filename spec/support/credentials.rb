@@ -10,6 +10,6 @@ private
 
 def credentials
   @credentials ||= begin
-    YAML.load_file("#{File.dirname(__dir__)}/config/fedex_credentials.yml")
+    YAML.load_file("#{File.dirname(__dir__)}/config/fedex_credentials.#{'ci.' if ENV['CI']}yml")
   end
 end

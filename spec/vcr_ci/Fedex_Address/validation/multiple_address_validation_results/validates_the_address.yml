@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://gatewaybeta.fedex.com/xml/
+    body:
+      encoding: UTF-8
+      string: |-
+        <AddressValidationRequest xmlns="http://fedex.com/ws/addressvalidation/v2">
+          <WebAuthenticationDetail>
+            <UserCredential>
+              <Key>xxx</Key>
+              <Password>xxx</Password>
+            </UserCredential>
+          </WebAuthenticationDetail>
+          <ClientDetail>
+            <AccountNumber>xxx</AccountNumber>
+            <MeterNumber>xxx</MeterNumber>
+            <Localization>
+              <LanguageCode>en</LanguageCode>
+              <LocaleCode>us</LocaleCode>
+            </Localization>
+          </ClientDetail>
+          <Version>
+            <ServiceId>aval</ServiceId>
+            <Major>2</Major>
+            <Intermediate>0</Intermediate>
+            <Minor>0</Minor>
+          </Version>
+          <RequestTimestamp>2019-08-24T01:34:25+00:00</RequestTimestamp>
+          <Options>
+            <CheckResidentialStatus>true</CheckResidentialStatus>
+          </Options>
+          <AddressesToValidate>
+            <Address>
+              <StreetLines>301 Las Colinas Blvd</StreetLines>
+              <City>Irving</City>
+              <StateOrProvinceCode>TX</StateOrProvinceCode>
+              <PostalCode>75039</PostalCode>
+              <CountryCode>USA</CountryCode>
+            </Address>
+          </AddressesToValidate>
+        </AddressValidationRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Aug 2019 10:11:20 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - siteDC=wtc; path=/; domain=.fedex.com; expires=Thu, 22-Aug-2019 10:11:20 GMT
+      X-Csr-Log-Transaction-Id:
+      - 028405ba-1843-4828-a11e-056e6a09f403
+      X-Csr-Elapsed-Millis:
+      - '290'
+      Vary:
+      - Accept-Encoding
+      Responsesslprotocol:
+      - TLSv1.2
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><AddressValidationReply xmlns="http://fedex.com/ws/addressvalidation/v2"><HighestSeverity>SUCCESS</HighestSeverity><Notifications><Severity>SUCCESS</Severity><Source>wsi</Source></Notifications><TransactionDetail><Localization><LanguageCode/></Localization></TransactionDetail><Version><ServiceId>aval</ServiceId><Major>2</Major><Intermediate>0</Intermediate><Minor>0</Minor></Version><ReplyTimestamp>2019-08-23T20:34:27-05:00</ReplyTimestamp><AddressResults><AddressId/><ProposedAddressDetails><Score>0</Score><Changes>NORMALIZED</Changes><Changes>HOUSE_OR_BOX_NUMBER_NOT_FOUND</Changes><ResidentialStatus>RESIDENTIAL</ResidentialStatus><DeliveryPointValidation>CONFIRMED</DeliveryPointValidation><Address><StreetLines>301
+        LAS COLINAS BLVD</StreetLines><City>IRVING</City><StateOrProvinceCode>TX</StateOrProvinceCode><PostalCode>75039</PostalCode><CountryCode>US</CountryCode></Address><RemovedNonAddressData/></ProposedAddressDetails></AddressResults></AddressValidationReply>
+    http_version:
+  recorded_at: Wed, 21 Aug 2019 10:11:21 GMT
+recorded_with: VCR 5.0.0

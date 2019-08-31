@@ -1,0 +1,108 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://gatewaybeta.fedex.com/xml/
+    body:
+      encoding: UTF-8
+      string: |-
+        <TrackRequest xmlns="http://fedex.com/ws/track/v6">
+          <WebAuthenticationDetail>
+            <UserCredential>
+              <Key>xxx</Key>
+              <Password>xxx</Password>
+            </UserCredential>
+          </WebAuthenticationDetail>
+          <ClientDetail>
+            <AccountNumber>xxx</AccountNumber>
+            <MeterNumber>xxx</MeterNumber>
+            <Localization>
+              <LanguageCode>en</LanguageCode>
+              <LocaleCode>us</LocaleCode>
+            </Localization>
+          </ClientDetail>
+          <Version>
+            <ServiceId>trck</ServiceId>
+            <Major>6</Major>
+            <Intermediate>0</Intermediate>
+            <Minor>0</Minor>
+          </Version>
+          <PackageIdentifier>
+            <Value>123456789012</Value>
+            <Type>TRACKING_NUMBER_OR_DOORTAG</Type>
+          </PackageIdentifier>
+          <IncludeDetailedScans>true</IncludeDetailedScans>
+        </TrackRequest>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Aug 2019 10:10:39 GMT
+      Server:
+      - Apache
+      Set-Cookie:
+      - siteDC=edc; path=/; domain=.fedex.com; expires=Thu, 22-Aug-2019 10:10:39 GMT
+      X-Csr-Log-Transaction-Id:
+      - f43f9f4e-15e2-4172-ba87-b4a5261b4548
+      X-Csr-Elapsed-Millis:
+      - '138'
+      Vary:
+      - Accept-Encoding
+      Responsesslprotocol:
+      - TLSv1.2
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><TrackReply xmlns="http://fedex.com/ws/track/v6"><HighestSeverity>SUCCESS</HighestSeverity><Notifications><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notifications><Version><ServiceId>trck</ServiceId><Major>6</Major><Intermediate>0</Intermediate><Minor>0</Minor></Version><DuplicateWaybill>true</DuplicateWaybill><MoreData>false</MoreData><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>12019~123456789012~FDEG</TrackingNumberUniqueIdentifier><CarrierCode>FDXG</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-08-11T00:00:00</ShipTimestamp><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458355000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2018-08-24T00:00:00</ShipTimestamp><DestinationAddress><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458402000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2018-10-10T00:00:00</ShipTimestamp><DestinationAddress><City>LOS
+        ANGELES</City><StateOrProvinceCode>CA</StateOrProvinceCode><CountryCode>IN</CountryCode><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458599000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-04-25T00:00:00</ShipTimestamp><DestinationAddress><City>VANCOUVER</City><StateOrProvinceCode>BC</StateOrProvinceCode><CountryCode>CA</CountryCode><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458624000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-05-20T00:00:00</ShipTimestamp><DestinationAddress><City>CED</City><StateOrProvinceCode>UT</StateOrProvinceCode><CountryCode>US</CountryCode><Residential>false</Residential></DestinationAddress><ActualDeliveryTimestamp>2019-05-21T12:44:00-07:00</ActualDeliveryTimestamp><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458625000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-05-20T00:00:00</ShipTimestamp><DestinationAddress><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458631000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-05-21T00:00:00</ShipTimestamp><DestinationAddress><City>TSET</City><StateOrProvinceCode>NY</StateOrProvinceCode><CountryCode>US</CountryCode><Residential>false</Residential></DestinationAddress><ActualDeliveryTimestamp>2019-06-04T10:48:00-07:00</ActualDeliveryTimestamp><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458642000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-06-06T00:00:00</ShipTimestamp><DestinationAddress><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458647000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><DestinationAddress><City>Lisboa</City><CountryCode>PT</CountryCode><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458656000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-07-08T00:00:00</ShipTimestamp><DestinationAddress><City>CARONNO
+        PENTUSELLA</City><StateOrProvinceCode>VA</StateOrProvinceCode><CountryCode>IT</CountryCode><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458674000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-07-09T00:00:00</ShipTimestamp><DestinationAddress><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458689000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-07-24T00:00:00</ShipTimestamp><DestinationAddress><City>BOSTON</City><StateOrProvinceCode>MA</StateOrProvinceCode><CountryCode>US</CountryCode><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458691000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-07-26T00:00:00</ShipTimestamp><DestinationAddress><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458704000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-08-08T00:00:00</ShipTimestamp><DestinationAddress><City>NEW
+        YORK</City><StateOrProvinceCode>NY</StateOrProvinceCode><CountryCode>US</CountryCode><Residential>false</Residential></DestinationAddress><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>2458710000~123456789012~FX</TrackingNumberUniqueIdentifier><CarrierCode>FDXE</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-08-14T00:00:00</ShipTimestamp><DestinationAddress><City>test</City><StateOrProvinceCode>TN</StateOrProvinceCode><CountryCode>US</CountryCode><Residential>false</Residential></DestinationAddress><ActualDeliveryTimestamp>2019-08-19T11:42:00-07:00</ActualDeliveryTimestamp><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails><TrackDetails><Notification><Severity>SUCCESS</Severity><Source>trck</Source><Code>0</Code><Message>Request
+        was successfully processed.</Message><LocalizedMessage>Request was successfully
+        processed.</LocalizedMessage></Notification><TrackingNumber>123456789012</TrackingNumber><TrackingNumberUniqueIdentifier>32019~123456789012~FDEG</TrackingNumberUniqueIdentifier><CarrierCode>FDXG</CarrierCode><PackageSequenceNumber>0</PackageSequenceNumber><PackageCount>0</PackageCount><ShipTimestamp>2019-06-02T00:00:00</ShipTimestamp><SignatureProofOfDeliveryAvailable>false</SignatureProofOfDeliveryAvailable></TrackDetails></TrackReply>
+    http_version:
+  recorded_at: Wed, 21 Aug 2019 10:10:39 GMT
+recorded_with: VCR 5.0.0

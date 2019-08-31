@@ -1,0 +1,9 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.1.10
+  - 2.3.8
+  - 2.5.3
+gemfile:
+  - ".gemfiles/Gemfile.httparty-0.12.x,nokogiri-1.6.x"
+  - ".gemfiles/Gemfile.httparty-0.17.x,nokogiri-1.9.x"
